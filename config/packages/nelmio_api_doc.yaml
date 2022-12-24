@@ -1,9 +1,97 @@
 nelmio_api_doc:
-    documentation:
-        info:
-            title: Symfony Swagger
-            description: REST API Endpoints for a Symfony based project
-            version: 1.0.0
-    areas: # to filter documented areas
-        path_patterns:
-            - ^/swagger(?!/api$) # Accepts routes under /swagger except /swagger/api
+  documentation:
+    info:
+      title: Symfony Swagger
+      description: |-
+        OpenAPI format of REST API Endpoints for a Symfony based project
+        
+        Contains:
+        - [nelmio/api-doc-bundle](https://symfony.com/bundles/NelmioApiDocBundle/current/index.html)
+        - [zircote/swagger-php](https://zircote.github.io/swagger-php/)
+      version: 1.0.0
+    tags:
+      - name: fake CRUD
+        description: database simulation
+      - name: welcome
+        description: dummy endpoints
+    components:
+      schemas:
+        DummyRequestBody:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Robert M. Richardson
+            date:
+              type: string
+              format: date
+              example: "1994-05-06"
+        Customer:
+          type: object
+          properties:
+            id:
+              type: int
+              example: 12
+            name:
+              type: string
+              example: Robert M. Richardson
+            dob:
+              type: string
+              format: date
+              example: "1994-05-06"
+            average_check:
+              type: number
+              format: float
+              example: 123.45
+            orders_amount:
+              type: number
+              example: 41
+            last_orders:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 0050374
+                  price:
+                    type: number
+                    format: float
+                    example: 38.77
+                  date:
+                    type: string
+                    format: date
+                    example: "2022-02-24"
+        EmailsList:
+          type: array
+          items:
+            type: string
+            format: email
+            example: some.person@yandex.ru
+        PersonsList:
+          type: array
+          items:
+            type: object
+            properties:
+              person:
+                type: string
+                example: James L. Vinton
+              dob:
+                type: string
+                format: date
+                example: "1956-06-04"
+        JsonDefault:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Welcome to your new controller!
+            path:
+              type: string
+              example: src/Controller/SomeController.php
+          xml:
+            name: JsonDefault
+  areas:
+    path_patterns:
+      - ^/welcome(?!/doc$)
+      - ^/crud(?!/doc$)

@@ -1,0 +1,9 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Symfony Swagger
+            description: REST API Endpoints for a Symfony based project
+            version: 1.0.0
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/swagger(?!/api$) # Accepts routes under /swagger except /swagger/api
